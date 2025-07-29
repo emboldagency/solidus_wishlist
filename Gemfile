@@ -16,6 +16,7 @@ gem 'mysql2', '~> 0.4.10'
 gem 'pg', '~> 0.21'
 
 group :development, :test do
+  gem 'sqlite3', '>= 2.1'
   if %w[master main].include?(branch) || branch >= 'v2.0'
     gem 'rails-controller-testing'
   else
@@ -28,5 +29,7 @@ group :development, :test do
     gem 'factory_bot', '> 4.10.0'
   end
 end
+
+gem 'observer'
 
 gemspec
