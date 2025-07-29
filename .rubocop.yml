@@ -1,7 +1,22 @@
 ---
-inherit_from: .hound.yml
+# inherit_from: .hound.yml
 
 AllCops:
   Exclude:
     - spec/dummy/**/*
     - Guardfile
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/ClassAndModuleChildren:
+  Enabled: false
