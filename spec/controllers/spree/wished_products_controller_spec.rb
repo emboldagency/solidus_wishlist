@@ -1,21 +1,21 @@
 RSpec.describe Spree::WishedProductsController, type: :controller do
   let(:user)            { create(:user) }
   let!(:wished_product) { create(:wished_product) }
-  let(:attributes)      {
-                          {
-                            wishlist_id: wished_product.wishlist.id,
-                            variant_id: wished_product.variant.id
-                          }
-                        }
+  let(:attributes)      do
+    {
+      wishlist_id: wished_product.wishlist.id,
+      variant_id: wished_product.variant.id
+    }
+  end
 
   before { allow(controller).to receive(:spree_current_user).and_return(user) }
 
   context '#create' do
     context 'with valid params' do
       it 'creates a new Spree::WishedProduct' do
-        expect {
+        expect do
           post :create, params: { wished_product: attributes }
-        }.to change(Spree::WishedProduct, :count).by(1)
+        end.to change(Spree::WishedProduct, :count).by(1)
       end
 
       it 'assigns a newly created wished_product as @wished_product' do
@@ -34,9 +34,9 @@ RSpec.describe Spree::WishedProductsController, type: :controller do
         let!(:wished_product) { create(:wished_product, wishlist: wishlist) }
 
         it 'does not save it' do
-          expect {
+          expect do
             post :create, params: { wished_product: attributes }
-          }.to change(Spree::WishedProduct, :count).by(0)
+          end.to change(Spree::WishedProduct, :count).by(0)
         end
       end
     end
@@ -70,9 +70,9 @@ RSpec.describe Spree::WishedProductsController, type: :controller do
 
   context '#destroy' do
     it 'destroys the requested wished_product' do
-      expect {
+      expect do
         delete :destroy, params: { id: wished_product }
-      }.to change(Spree::WishedProduct, :count).by(-1)
+      end.to change(Spree::WishedProduct, :count).by(-1)
     end
 
     it 'redirects to the wished_products list' do

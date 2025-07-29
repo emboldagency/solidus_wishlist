@@ -18,17 +18,18 @@ class Spree::Wishlist < ActiveRecord::Base
   end
 
   def can_be_read_by?(user)
-    !self.is_private? || user == self.user
+    !is_private? || user == self.user
   end
 
   def is_default=(value)
     self[:is_default] = value
     return unless is_default?
+
     Spree::Wishlist.where(is_default: true, user_id: user_id).where.not(id: id).update_all(is_default: false)
   end
 
   def is_public?
-    !self.is_private?
+    !is_private?
   end
 
   private

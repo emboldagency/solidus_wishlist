@@ -82,9 +82,9 @@ RSpec.describe Spree::Wishlist, type: :model do
     let!(:wished_product) { create(:wished_product) }
 
     it 'deletes associated wished products' do
-      expect {
+      expect do
         wished_product.wishlist.destroy
-      }.to change(Spree::WishedProduct, :count).by(-1)
+      end.to change(Spree::WishedProduct, :count).by(-1)
     end
   end
 end

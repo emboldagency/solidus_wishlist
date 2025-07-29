@@ -1,6 +1,6 @@
 class AddIndexToWishlists < SolidusSupport::Migration[4.2]
   def change
     add_index :spree_wishlists, [:user_id]
-    add_index :spree_wishlists, [:user_id, :is_default]
+    add_index :spree_wishlists, %i[user_id is_default]
   end
 end

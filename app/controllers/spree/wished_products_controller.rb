@@ -6,7 +6,9 @@ class Spree::WishedProductsController < Spree::StoreController
     @wishlist = spree_current_user.wishlist
 
     if @wishlist.include? params[:wished_product][:variant_id]
-      @wished_product = @wishlist.wished_products.detect { |wp| wp.variant_id == params[:wished_product][:variant_id].to_i }
+      @wished_product = @wishlist.wished_products.detect do |wp|
+        wp.variant_id == params[:wished_product][:variant_id].to_i
+      end
     else
       @wished_product.wishlist = spree_current_user.wishlist
       @wished_product.save

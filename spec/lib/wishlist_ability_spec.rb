@@ -41,7 +41,7 @@ RSpec.describe WishlistAbility do
       create(
         :wished_product,
         wishlist: create(:wishlist, user: user),
-        variant:  create(:variant)
+        variant: create(:variant)
       )
     end
 

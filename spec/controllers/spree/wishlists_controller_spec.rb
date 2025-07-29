@@ -48,9 +48,9 @@ RSpec.describe Spree::WishlistsController, type: :controller do
 
     context 'when the wishlist fails to update' do
       it 'raise error' do
-        expect {
+        expect do
           put :update, params: { id: wishlist, wishlist: {} }
-        }.to raise_error
+        end.to raise_error
       end
     end
   end
@@ -63,9 +63,9 @@ RSpec.describe Spree::WishlistsController, type: :controller do
 
     # Regression test for issue #68
     it 'raises record not found on invalid params' do
-      expect {
+      expect do
         get :show, params: { id: 'nope' }
-      }.to raise_error(ActiveRecord::RecordNotFound)
+      end.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
@@ -99,9 +99,9 @@ RSpec.describe Spree::WishlistsController, type: :controller do
 
     context 'when the wishlist saves successfully' do
       it 'saves the new wishlist' do
-        expect {
+        expect do
           post :create, params: { wishlist: attributes }
-        }.to change(Spree::Wishlist, :count).by(1)
+        end.to change(Spree::Wishlist, :count).by(1)
       end
 
       it 'redirects to the newly created wishlist' do
@@ -119,18 +119,18 @@ RSpec.describe Spree::WishlistsController, type: :controller do
 
     context 'when the wishlist fails to save' do
       it 'raise error' do
-        expect {
+        expect do
           post :create, params: { wishlist: {} }
-        }.to raise_error
+        end.to raise_error
       end
     end
   end
 
   context '#destroy' do
     it 'destroys the requested wishlist' do
-      expect {
+      expect do
         delete :destroy, params: { id: wishlist }
-      }.to change(Spree::Wishlist, :count).by(-1)
+      end.to change(Spree::Wishlist, :count).by(-1)
     end
 
     it 'redirects to the users account page' do
