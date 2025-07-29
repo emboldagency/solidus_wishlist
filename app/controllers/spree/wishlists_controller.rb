@@ -1,4 +1,4 @@
-class Spree::WishlistsController < Spree::StoreController
+class Spree::WishlistsController < Spree::BaseController
   helper 'spree/products'
 
   before_action :find_wishlist, only: %i[destroy show update edit]
@@ -13,7 +13,7 @@ class Spree::WishlistsController < Spree::StoreController
 
   def index
     @wishlists = spree_current_user.wishlists
-    respond_with(@wishlist)
+    respond_with(@wishlists)
   end
 
   def edit
@@ -21,7 +21,7 @@ class Spree::WishlistsController < Spree::StoreController
   end
 
   def update
-    @wishlist.update_attributes wishlist_attributes
+    @wishlist.update wishlist_attributes
     respond_with(@wishlist)
   end
 
@@ -46,7 +46,7 @@ class Spree::WishlistsController < Spree::StoreController
   def destroy
     @wishlist.destroy
     respond_with(@wishlist) do |format|
-      format.html { redirect_to account_path }
+      format.html { redirect_to '/account' }
     end
   end
 

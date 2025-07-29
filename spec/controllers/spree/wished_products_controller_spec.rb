@@ -1,14 +1,19 @@
 RSpec.describe Spree::WishedProductsController, type: :controller do
   let(:user)            { create(:user) }
   let!(:wished_product) { create(:wished_product) }
+  let(:new_variant)     { create(:variant) }
   let(:attributes)      do
     {
       wishlist_id: wished_product.wishlist.id,
-      variant_id: wished_product.variant.id
+      variant_id: new_variant.id # Use a different variant to avoid duplicates
     }
   end
 
-  before { allow(controller).to receive(:spree_current_user).and_return(user) }
+  before do
+    allow(controller).to receive(:spree_current_user).and_return(user)
+    # Mock the user wishlist method
+    allow(user).to receive(:wishlist).and_return(wished_product.wishlist)
+  end
 
   context '#create' do
     context 'with valid params' do
@@ -32,6 +37,12 @@ RSpec.describe Spree::WishedProductsController, type: :controller do
       context 'and product already present in wishlist' do
         let(:wishlist)        { create(:wishlist, user: user) }
         let!(:wished_product) { create(:wished_product, wishlist: wishlist) }
+        let(:attributes)      do
+          {
+            wishlist_id: wishlist.id,
+            variant_id: wished_product.variant.id # Use the same variant that's already in the wishlist
+          }
+        end
 
         it 'does not save it' do
           expect do
@@ -43,7 +54,7 @@ RSpec.describe Spree::WishedProductsController, type: :controller do
 
     context 'with invalid params' do
       it 'raises error' do
-        expect { post :create }.to raise_error
+        expect { post :create }.to raise_error(ActionController::ParameterMissing)
       end
     end
   end
@@ -63,7 +74,7 @@ RSpec.describe Spree::WishedProductsController, type: :controller do
 
     context 'with invalid params' do
       it 'raises error' do
-        expect { put :update }.to raise_error
+        expect { put :update }.to raise_error(ActionController::UrlGenerationError)
       end
     end
   end
@@ -81,7 +92,7 @@ RSpec.describe Spree::WishedProductsController, type: :controller do
     end
 
     it 'requires the :id parameter' do
-      expect { delete :destroy }.to raise_error
+      expect { delete :destroy }.to raise_error(ActionController::UrlGenerationError)
     end
   end
 end
