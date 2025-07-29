@@ -1,6 +1,9 @@
-# Solidus Wishlist
+# Solidus Wishlist (Embold Agency Fork)
 
-[![Build Status](https://api.travis-ci.org/boomerdigital/solidus_wishlist.svg?branch=master)](https://travis-ci.org/boomerdigital/solidus_wishlist)
+[![Build and Deploy](https://embold.net/api/github/badge/workflow-status.php?repo=solidus_wishlistworkflowrelease.yml&workflow=build-and-deploy.yml)](https://github.com/emboldagency/solidus_wishlistworkflowrelease.yml/actions/workflows/build-and-deploy.yml) <!--
+-->![Semantic Versioning](https://embold.net/api/github/badge/semver.php?repo=solidus_wishlist&workflow=release.yml&)
+
+**This is a fork of [boomerdigital/solidus_wishlist](https://github.com/boomerdigital/solidus_wishlist) maintained by [Embold Agency](https://github.com/emboldagency).**
 
 The Solidus Wishlist extension enables multiple wishlists per user, as well as managing those as public (sharable) and private.
 
@@ -10,17 +13,17 @@ The Solidus Wishlist extension enables multiple wishlists per user, as well as m
 
 Add the following to your `Gemfile`
 ```ruby
-gem 'solidus_wishlist', github: 'boomerdigital/solidus_wishlist', branch: 'master'
+gem 'solidus_wishlist', github: 'emboldagency/solidus_wishlist', branch: 'main'
 ```
 
 If you want to disable defacing of product/user views, add the following to your `Gemfile`
 ```ruby
-gem 'solidus_wishlist', github: 'boomerdigital/solidus_wishlist', branch: 'master', require: 'solidus_wishlist_no_deface'
+gem 'solidus_wishlist', github: 'emboldagency/solidus_wishlist', branch: 'main', require: 'solidus_wishlist_no_deface'
 ```
 
 If you want to include the ability to email a friend your wishlist, add the following to your `Gemfile`
 ```ruby
-gem 'solidus_email_to_friend', github: 'boomerdigital/solidus_email_to_friend', branch: 'master'
+gem 'solidus_email_to_friend', github: 'emboldagency/solidus_email_to_friend', branch: 'main'
 ```
 
 Run
@@ -42,7 +45,7 @@ bundle
 bundle exec rake
 ```
 
-When testing your applications integration with this extension you may use it's factories.
+When testing your application's integration with this extension you may use its factories.
 Simply add this require statement to your spec_helper:
 
 ```ruby
@@ -59,7 +62,6 @@ require 'solidus_whishlist/factories'
 
 Copyright (c) 2009-2015 [Spree Commerce Inc.][4] and [contributors][5], released under the [New BSD License][3]
 
-[1]: https://github.com/boomerdigital/solidus_wishlist/blob/master/CONTRIBUTING.md
-[3]: https://github.com/boomerdigital/solidus_wishlist/blob/master/LICENSE.md
-[4]: https://github.com/spree
-[5]: https://github.com/boomerdigital/solidus_wishlist/graphs/contributors
+[1]: https://github.com/emboldagency/solidus_wishlist/blob/main/CONTRIBUTING.md
+[3]: https://github.com/emboldagency/solidus_wishlist/blob/main/LICENSE.md
+[4]:
