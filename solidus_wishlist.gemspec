@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.require_path  = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency "solidus_core", [">= 1.2.0", "< 4.0"]
+  s.add_dependency "solidus_core", [">= 1.2.0", "< 5.0"]
   s.add_dependency "solidus_support"
   s.add_dependency "deface", '~> 1.0'
 
