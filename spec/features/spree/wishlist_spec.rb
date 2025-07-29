@@ -3,7 +3,6 @@ RSpec.feature 'Wishlist', :js do
   given(:product) { create(:product) }
 
   context 'with no wishlist' do
-
     context 'create' do
       background do
         sign_in_as! user
@@ -125,7 +124,6 @@ RSpec.feature 'Wishlist', :js do
     given(:wishlist) { create(:wishlist) }
 
     context 'when logged out' do
-
       scenario 'visit a private wishlist' do
         wishlist.update_attributes(is_private: true)
 

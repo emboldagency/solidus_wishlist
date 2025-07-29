@@ -5,6 +5,5 @@ class RemoveWishedProductsForDeletedVariants < SolidusSupport::Migration[4.2]
     end
   end
 
-  def down
-  end
+  def down; end
 end
