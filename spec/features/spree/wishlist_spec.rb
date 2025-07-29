@@ -125,7 +125,7 @@ RSpec.feature 'Wishlist', :js do
 
     context 'when logged out' do
       scenario 'visit a private wishlist' do
-        wishlist.update_attributes(is_private: true)
+        wishlist.update(is_private: true)
 
         visit spree.wishlist_path(wishlist)
 
@@ -134,7 +134,7 @@ RSpec.feature 'Wishlist', :js do
       end
 
       scenario 'visit a public wishlist' do
-        wishlist.update_attributes(is_private: false)
+        wishlist.update(is_private: false)
 
         visit spree.wishlist_path(wishlist)
 
