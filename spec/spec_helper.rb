@@ -15,9 +15,9 @@ require 'shoulda-matchers'
 require 'pry'
 require 'ffaker'
 
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].sort.each { |file| require file }
 
-Dir[File.join(File.dirname(__FILE__), 'factories/*.rb')].each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), 'factories/*.rb')].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
