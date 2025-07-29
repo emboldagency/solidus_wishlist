@@ -1,6 +1,8 @@
 # Solidus Wishlist
 
-[![Build Status](https://api.travis-ci.org/boomerdigital/solidus_wishlist.svg?branch=master)](https://travis-ci.org/boomerdigital/solidus_wishlist)
+[![Build and Deploy](https://embold.net/api/github/badge/workflow-status.php?repo=solidus_wishlistworkflowrelease.yml&workflow=build-and-deploy.yml)](https://github.com/emboldagency/solidus_wishlistworkflowrelease.yml/actions/workflows/build-and-deploy.yml) <!--
+-->![Semantic Versioning](https://embold.net/api/github/badge/semver.php?repo=solidus_wishlistworkflowrelease.yml&)
+
 
 The Solidus Wishlist extension enables multiple wishlists per user, as well as managing those as public (sharable) and private.
 
