@@ -11,8 +11,7 @@ module SolidusWishlist
     MAJOR = 2
     MINOR = 2
     TINY  = 0
-    PRE   = nil
+    PRE   = 'embold.1'
 
-    STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
-  end
+    STRING = [MAJOR, MINOR, TINY].join('.') + (PRE ? "-#{PRE}" : "")  end
 end
