@@ -1,8 +1,8 @@
 # Solidus Wishlist
 
-[![release.yml](https://embold.net/api/github/badge/workflow-status.php?repo=solidus_wishlist&workflow=release.yml)](https://github.com/emboldagency/solidus_wishlist/actions/workflows/release.yml) <!--
--->[![ci.yml](https://embold.net/api/github/badge/workflow-status.php?repo=solidus_wishlist&workflow=ci.yml)](https://github.com/emboldagency/solidus_wishlist/actions/workflows/ci.yml) <!--
--->![Semantic Versioning](https://embold.net/api/github/badge/semver.php?repo=solidus_wishlist)
+![Semantic Versioning](https://embold.net/api/github/badge/semver.php?repo=solidus_wishlist) <!--
+--> [![release.yml](https://embold.net/api/github/badge/workflow-status.php?repo=solidus_wishlist&workflow=release.yml)](https://github.com/emboldagency/solidus_wishlist/actions/workflows/release.yml) <!--
+--> [![ci.yml](https://embold.net/api/github/badge/workflow-status.php?repo=solidus_wishlist&workflow=ci.yml)](https://github.com/emboldagency/solidus_wishlist/actions/workflows/ci.yml)
 
 The extension enables multiple wishlists per user, with public (sharable) and private options.
 
