@@ -1,64 +1,68 @@
-class Spree::WishlistsController < Spree::BaseController
-  helper 'spree/products'
+# frozen_string_literal: true
 
-  before_action :find_wishlist, only: %i[destroy show update edit]
+module Spree
+  class WishlistsController < Spree::BaseController
+    helper "spree/products"
 
-  respond_to :html
-  respond_to :js, only: :update
+    before_action :find_wishlist, only: %i[destroy show update edit]
 
-  def new
-    @wishlist = Spree::Wishlist.new
-    respond_with(@wishlist)
-  end
+    respond_to :html
+    respond_to :js, only: :update
 
-  def index
-    @wishlists = spree_current_user.wishlists
-    respond_with(@wishlists)
-  end
-
-  def edit
-    respond_with(@wishlist)
-  end
-
-  def update
-    @wishlist.update wishlist_attributes
-    respond_with(@wishlist)
-  end
-
-  def show
-    respond_with(@wishlist)
-  end
-
-  def default
-    @wishlist = spree_current_user.wishlist
-    respond_with(@wishlist) do |format|
-      format.html { render :show }
+    def index
+      @wishlists = spree_current_user.wishlists
+      respond_with(@wishlists)
     end
-  end
 
-  def create
-    @wishlist = Spree::Wishlist.new wishlist_attributes
-    @wishlist.user = spree_current_user
-    @wishlist.save
-    respond_with(@wishlist)
-  end
-
-  def destroy
-    @wishlist.destroy
-    respond_with(@wishlist) do |format|
-      format.html { redirect_to '/account' }
+    def show
+      respond_with(@wishlist)
     end
-  end
 
-  private
+    def new
+      @wishlist = Spree::Wishlist.new
+      respond_with(@wishlist)
+    end
 
-  def wishlist_attributes
-    params.require(:wishlist).permit(:name, :is_default, :is_private)
-  end
+    def edit
+      respond_with(@wishlist)
+    end
 
-  # Isolate this method so it can be overwritten
-  def find_wishlist
-    @wishlist = Spree::Wishlist.find_by_access_hash!(params[:id])
-    authorize! params[:action].to_sym, @wishlist
+    def create
+      @wishlist = Spree::Wishlist.new wishlist_attributes
+      @wishlist.user = spree_current_user
+      @wishlist.save
+      respond_with(@wishlist)
+    end
+
+    def update
+      @wishlist.update wishlist_attributes
+      respond_with(@wishlist)
+    end
+
+    def default
+      @wishlist = spree_current_user.wishlist
+      respond_with(@wishlist) do |format|
+        format.html { render :show }
+      end
+    end
+
+    def destroy
+      @wishlist.destroy
+      respond_with(@wishlist) do |format|
+        format.html { redirect_to "/account" }
+      end
+    end
+
+    private
+
+    def wishlist_attributes
+      params.require(:wishlist).permit(:name, :is_default, :is_private)
+    end
+
+    # Isolate this method so it can be overwritten
+    def find_wishlist
+      @wishlist = Spree::Wishlist.find_by!(access_hash: params[:id])
+      authorize! params[:action].to_sym, @wishlist
+    end
   end
 end
